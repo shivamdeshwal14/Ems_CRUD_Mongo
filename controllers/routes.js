@@ -29,4 +29,21 @@ router.post("/save-data",(req,res)=>{
     }    
     )
 })
+// show all employees
+
+
+router.get("/show-all-emp",(req,res)=>{
+    
+    Employee.find((err,result)=>
+    {
+        if(!err)
+        {
+            res.render('showEmp',{list:result})
+        }
+        else{
+            console.log("error",err);
+        }
+    })
+})
+
 module.exports=router
