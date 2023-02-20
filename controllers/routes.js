@@ -66,5 +66,45 @@ router.get('/final-delete-emp/:id',(req,res)=>{
    res.redirect('/emp/delete-emp')
 })
 })
+// update user
+router.get('/update-all-emp',(req,res)=>{
+    Employee.find((err,result)=>{
+        if(!err)
+        {
+           
+            res.render('updateUser',{list:result})
+            
+        }
+        else{
+            console.log("Update error",err);
+        }
+    })
+})
+router.get('/edit-emp-data/:id',(req,res)=>{
+    
+        Employee.findById(req.params.id,(err,result)=>{
+           if(err){
+            console.log(err);
+           } 
+           else{
+           
+            res.render('finalupdateUser',{emp:result})
+           }
+        })
+      
+    
+   
+})
+router.post('/final-update-emp',(req,res)=>{
+ Employee.findByIdAndUpdate(req.body.id,req.body,{new:true},(err,result)=>{
+    if(err){
+        console.log(err);
+    }
+    else{
+        res.redirect("/emp/update-all-emp")
+    }
+ })
+
+})
 
 module.exports=router

@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>UPDATE EMPLOYEE DETAILS</h1>
+    
+    <table class="table table-hover">
+  <thead>
+    <tr>
+       
+      <th scope="col">NAME</th>
+      <th scope="col">Email</th>
+      <th scope="col">CITY</th>
+      <th scope="col">PHONE</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each list}}
+    
+    <tr class="table-active">
+      
+       <td >{{this.fullName}}</td>
+      <td >{{this.email}}</td>
+      <td >{{this.city}}</td>
+      <td >{{this.phone}}</td>
+      <td ><a href="/emp/edit-emp-data/{{this.id}} "class="btn btn-info btn block">Update</a></td>
+        </tr>
+ {{/each}}
+    
+  </tbody>
+</table>
+</div>
