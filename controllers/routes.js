@@ -30,8 +30,6 @@ router.post("/save-data",(req,res)=>{
     )
 })
 // show all employees
-
-
 router.get("/show-all-emp",(req,res)=>{
     
     Employee.find((err,result)=>
@@ -44,6 +42,29 @@ router.get("/show-all-emp",(req,res)=>{
             console.log("error",err);
         }
     })
+})
+// delete user
+router.get('/delete-emp',(req,res)=>
+{
+    Employee.find((err,result)=>{
+        if(!err)
+        {
+           
+            res.render('delete',{list:result})
+            
+        }
+        else{
+            console.log("delete error",err
+            );
+        }
+    })
+})
+router.get('/final-delete-emp/:id',(req,res)=>{
+   Employee.findByIdAndDelete(req.params.id,(err,result)=>{
+    if(err) console.log(err);
+    else 
+   res.redirect('/emp/delete-emp')
+})
 })
 
 module.exports=router
