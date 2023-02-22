@@ -11,7 +11,7 @@ phone:{
  },
  city:{
     type:String
- },
+ }
  });
  module.exports =moongose.model('Employee',empschema);
 
